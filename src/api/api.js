@@ -22,15 +22,10 @@ export const usersAPI = {
                 return response.data;
             });
     },
-    getProfile(userId = 2){
+    getProfile(userId){
        return axios.get(`${api}profile/${userId}`).then(response => {
            return response.data
        })
-    },
-    authUser(){
-       return axios.get(api + `auth/me`, {
-            withCredentials: true
-        })
     },
     follow(userId){
        return axios.post(`${api}follow/${userId}`, {},{
@@ -47,5 +42,13 @@ export const usersAPI = {
             "API_KEY": "161f90c0-2ef7-4f63-89c5-48dd2a716be7"
             }
             })
+    }
+}
+
+export const authAPI = {
+    me(){
+        return axios.get(api + `auth/me`, {
+            withCredentials: true
+        })
     }
 }
