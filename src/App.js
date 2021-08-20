@@ -22,8 +22,6 @@ function App(props) {
             <Route path="/friends" render={() => <ProfileContainer store={props.store}/>}/>
             <Route path="/users" render={() => <UsersContainer />} />
             <Route path="/login" render={() => <Login />} />
-            {/* <Route path="/dialogs" component={Dialogs}/>
-            <Route path="/profile" component={Profile}/>*/}
           </div>
       </div>
   );
