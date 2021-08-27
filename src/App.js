@@ -8,7 +8,7 @@ import DialogsContainer from './components/Dialogs/DialogsContainer';
 import UsersContainer from './components/Users/UsersContainer';
 import Login from './components/Login/Login';
 
-function App(props) {
+function App() {
   return (
       <div className="app-wrapper">
           <HeaderContainer/>
@@ -16,10 +16,10 @@ function App(props) {
           <div className="app-wrapper-content">
             <Route path="/profile/:userId?" render={() => <ProfileContainer  />}/>
             <Route path="/dialogs" render={() => <DialogsContainer />}/>
-            <Route path="/news" render={() => <ProfileContainer store={props.store}/>}/>
-            <Route path="/music" render={() => <ProfileContainer store={props.store}/>}/>
-            <Route path="/settings" render={() => <ProfileContainer store={props.store}/>}/>
-            <Route path="/friends" render={() => <ProfileContainer store={props.store}/>}/>
+            <Route path="/news" render={() => <ProfileContainer />}/>
+            <Route path="/music" render={() => <ProfileContainer />}/>
+            <Route path="/settings" render={() => <ProfileContainer />}/>
+            <Route path="/friends" render={() => <ProfileContainer />}/>
             <Route path="/users" render={() => <UsersContainer />} />
             <Route path="/login" render={() => <Login />} />
           </div>

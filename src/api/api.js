@@ -3,13 +3,13 @@ import * as axios from 'axios';
 
 const api = 'https://social-network.samuraijs.com/api/1.0/';
 
-// const instance = axios.create({
-//         withCredentials: true,
-//         baseURL: 'https://social-network.samuraijs.com/api/1.0/',
-//         headers: {
-//             "API_KEY": "2d59a1d1-0abd-4ff2-a123-03118e91730d"
-//         }
-// })
+const instance = axios.create({
+        withCredentials: true,
+        baseURL: 'https://social-network.samuraijs.com/api/1.0/',
+        headers: {
+            "API_KEY": "dffc86a5-2b03-4c22-a34c-0a54837561b1"
+        }
+})
 
 
 export const usersAPI = {
@@ -22,26 +22,29 @@ export const usersAPI = {
                 return response.data;
             });
     },
-    getProfile(userId){
-       return axios.get(`${api}profile/${userId}`).then(response => {
-           return response.data
-       })
-    },
     follow(userId){
-       return axios.post(`${api}follow/${userId}`, {},{
-        withCredentials: true,
-        headers: {
-        "API_KEY": "161f90c0-2ef7-4f63-89c5-48dd2a716be7"
-        }
-    })
+       return instance.post(`follow/${userId}`)
     },
     unfollow(userId){
-     return   axios.delete(`${api}follow/${userId}`, {
-            withCredentials: true,
-            headers: {
-            "API_KEY": "161f90c0-2ef7-4f63-89c5-48dd2a716be7"
-            }
-            })
+     return   instance.delete(`follow/${userId}`)
+    },
+    getProfile(userId){
+        console.warn('Obsolete method, please use profile API object');
+        return profileAPI.getProfile(userId);
+     },
+}
+
+export const profileAPI = {
+    getProfile(userId){
+        return axios.get(`${api}profile/${userId}`).then(response => {
+            return response.data
+        })
+     },
+     getStatus(userId){
+         return instance.get(`profile/status/${userId}`);
+     },
+     updateStatus(status){
+        return axios.put(`${api}profile/status/`,{status: status});
     }
 }
 
